@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_tagline">ایماندار ویڈیو ریکوری: جو ویڈیوز فون ابھی تک پڑھ سکتا ہے وہ ڈھونڈتی ہے، اور جو ختم ہو چکی ہیں ان کے بارے میں صاف بتاتی ہے۔</string>
+    <string name="lang_toggle">English</string>
+
+    <string name="card_media_title">حال ہی میں ڈیلیٹ / گم شدہ ویڈیوز</string>
+    <string name="card_media_desc">وہ تمام ویڈیوز اسکین کرتی ہے جو اینڈرائیڈ ابھی دیکھ سکتا ہے، سسٹم کی ٹریش (اینڈرائیڈ 11+) سمیت، جنہیں واپس لایا جا سکتا ہے۔</string>
+    <string name="card_sd_title">ایس ڈی کارڈ ویڈیو ریکوری</string>
+    <string name="card_sd_desc">فولڈر یا ایس ڈی کارڈ کا صرف پڑھنے والا اسکین: چھپی ویڈیوز، ‎.trashed فائلیں، بغیر نام والی ویڈیو فائلیں اور بچے ہوئے تھمب نیل۔</string>
+    <string name="card_reset_title">فیکٹری ری سیٹ ریکوری جائزہ</string>
+    <string name="card_reset_desc">بتاتی ہے کہ ریکوری تکنیکی طور پر ممکن ہے یا نہیں، اور ہر اس باہر کی جگہ کی رہنمائی کرتی ہے جہاں آپ کی ویڈیوز ابھی موجود ہو سکتی ہیں۔</string>
+
+    <string name="privacy_title">پرائیویسی</string>
+    <string name="privacy_body">مکمل آف لائن کام کرتی ہے۔ انٹرنیٹ کی اجازت نہیں۔ کچھ بھی اپلوڈ یا شیئر نہیں ہوتا۔ اسکین صرف پڑھتا ہے: اصل فائلیں کبھی تبدیل، منتقل یا ڈیلیٹ نہیں ہوتیں۔</string>
+    <string name="honest_title">یہ ایپ کیا نہیں کر سکتی</string>
+    <string name="honest_body">نئے اینڈرائیڈ فون اسٹوریج کو انکرپٹ رکھتے ہیں۔ جب ویڈیو مستقل ڈیلیٹ ہو کر اس کی جگہ پر نیا ڈیٹا لکھا جا چکا ہو، یا فون فیکٹری ری سیٹ ہو چکا ہو، تو کوئی ایپ اسے واپس نہیں لا سکتی۔ یہ ایپ کبھی جعلی نتائج یا فرضی فیصد نہیں دکھاتی۔</string>
+
+    <string name="scan_media_title">حال ہی میں ڈیلیٹ / گم شدہ ویڈیوز</string>
+    <string name="scan_media_note">وہ ویڈیوز دکھاتی ہے جو اینڈرائیڈ ابھی دکھا رہا ہے۔ جن پر TRASH لکھا ہو وہ سسٹم کی Recently Deleted میں ہیں اور واپس لائی جا سکتی ہیں۔ نوٹ: کچھ گیلری ایپس (مثلاً سام سنگ گیلری) اپنی الگ ٹریش رکھتی ہیں جو دوسری ایپس نہیں پڑھ سکتیں، اسے اسی گیلری ایپ میں چیک کریں۔ عام ویڈیو کا نظر آنا مطلب ہے کہ ویڈیو موجود ہے، یہ ریکور شدہ فائل نہیں۔</string>
+    <string name="scan_sd_title">ایس ڈی کارڈ ویڈیو ریکوری</string>
+    <string name="scan_sd_note">اپنا ایس ڈی کارڈ (یا کوئی بھی فولڈر) چنیں۔ اسکین صرف فائلیں پڑھتا ہے۔ یہ چھپی ویڈیوز، ‎.trashed فائلیں، بغیر ایکسٹینشن والی ویڈیوز (فائل سگنیچر سے) اور بچے ہوئے ‎.thumbnails ڈھونڈتا ہے۔ مکمل مٹی ہوئی ویڈیوز کے لیے کمپیوٹر پر را اسکین چاہیے، PC گائیڈ دبائیں۔</string>
+
+    <string name="btn_start_media">اسکین شروع کریں</string>
+    <string name="btn_choose_folder">ایس ڈی کارڈ / فولڈر چنیں</string>
+    <string name="btn_cancel">منسوخ</string>
+    <string name="btn_pc_guide">کمپیوٹر ڈیپ اسکین گائیڈ</string>
+    <string name="search_hint">نام یا فولڈر سے تلاش کریں</string>
+
+    <string name="chip_all">سب</string>
+    <string name="chip_trash">ٹریش</string>
+    <string name="chip_hidden">چھپی / بغیر نام</string>
+    <string name="chip_thumbs">تھمب نیل</string>
+    <string name="chip_recent">پچھلے 30 دن</string>
+    <string name="chip_large">50 MB سے بڑی</string>
+    <string name="sort_date">ترتیب: تاریخ</string>
+    <string name="sort_size">ترتیب: سائز</string>
+    <string name="sort_name">ترتیب: نام</string>
+
+    <string name="status_idle">ابھی اسکین نہیں ہوا۔</string>
+    <string name="status_scanning">اسکین جاری… %1$d فائلیں چیک، %2$d ملیں</string>
+    <string name="status_done">اسکین مکمل: %1$d فائلیں چیک، %2$d ملیں۔</string>
+    <string name="status_cancelled">اسکین منسوخ کر دیا گیا۔</string>
+    <string name="status_shown">%2$d میں سے %1$d دکھائی جا رہی ہیں</string>
+    <string name="status_error">اسکین ناکام: %1$s</string>
+    <string name="empty_results">یہاں کچھ نہیں ملا۔ اس کا مطلب یہ نہیں کہ ویڈیو ہمیشہ کے لیے ختم ہے؛ فیکٹری ری سیٹ جائزے میں باہر کی جگہیں چیک کریں۔</string>
+    <string name="perm_denied">اجازت نہیں دی گئی۔ اسکین کے لیے ویڈیو کی اجازت ضروری ہے۔ فون کی Settings → Apps → Nexus Deep Recovery AI → Permissions سے اجازت دیں۔</string>
+
+    <string name="kind_video">ویڈیو</string>
+    <string name="kind_trashed">ٹریش · واپس لائی جا سکتی ہے</string>
+    <string name="kind_hidden">چھپی ہوئی</string>
+    <string name="kind_signature">بغیر نام کی ویڈیو (سگنیچر میچ)</string>
+    <string name="kind_thumbnail">صرف تھمب نیل (چھوٹی تصویر، ویڈیو نہیں)</string>
+
+    <string name="actions_title">کام چنیں</string>
+    <string name="action_preview">دیکھیں</string>
+    <string name="action_copy">ریکوری فولڈر میں کاپی کریں (Movies/NexusRecovery)</string>
+    <string name="action_restore">ٹریش سے واپس لائیں</string>
+    <string name="action_details">تفصیل</string>
+    <string name="copy_running">کاپی ہو رہی ہے… اصل فائل تبدیل نہیں ہو رہی۔</string>
+    <string name="copy_done">محفوظ ہو گئی: %1$s</string>
+    <string name="copy_failed">کاپی ناکام: %1$s</string>
+    <string name="copy_cancelled">کاپی منسوخ۔ ادھوری کاپی ہٹا دی گئی۔</string>
+    <string name="restore_done">واپس آ گئی۔ ویڈیو گیلری میں موجود ہے۔</string>
+    <string name="restore_failed">واپسی مکمل نہیں ہوئی۔</string>
+    <string name="preview_failed">اس فون پر کوئی ایپ یہ فائل نہیں کھول سکتی۔</string>
+    <string name="details_body">نام: %1$s\nسائز: %2$s\nتاریخ: %3$s\nجگہ: %4$s\nقسم: %5$s</string>
+
+    <string name="pc_guide_title">کمپیوٹر سے ڈیپ اسکین (مفت)</string>
+    <string name="pc_guide_body">اینڈرائیڈ ایپس کو ایس ڈی کارڈ کے را سیکٹر پڑھنے نہیں دیتا، اس لیے مٹی ہوئی ویڈیوز فون سے نہیں نکالی جا سکتیں۔ مفت اور محفوظ طریقہ:\n\n1۔ ایس ڈی کارڈ کا استعمال فوراً بند کریں۔ اس پر نئی تصویر یا ویڈیو نہ بنائیں۔\n2۔ کارڈ نکال کر کارڈ ریڈر کے ذریعے کمپیوٹر میں لگائیں۔\n3۔ cgsecurity.org سے PhotoRec ڈاؤن لوڈ کریں (مفت، اوپن سورس، TestDisk کا حصہ)۔\n4۔ ایس ڈی کارڈ چنیں، \"Free\" والا آپشن چنیں، اور File Opt میں mov / mp4 / 3gp / mkv چنے رہنے دیں۔\n5۔ نتیجہ کمپیوٹر کی اپنی ڈرائیو میں محفوظ کریں، ایس ڈی کارڈ پر کبھی نہیں۔\n6۔ ریکور شدہ فولڈر کھول کر ویڈیوز چیک کریں۔\n\nنوٹ: یہ صرف ایس ڈی کارڈ اور پرانی بغیر انکرپشن والی اسٹوریج پر کام کرتا ہے، نئے فون کی اندرونی میموری پر نہیں۔</string>
+
+    <string name="reset_title">فیکٹری ری سیٹ ریکوری جائزہ</string>
+    <string name="reset_stop">⚠ یہ چیک اسی فون پر چلائیں جس کی ویڈیوز گئی ہیں۔ اس فون کو کم سے کم استعمال کریں: ہر نئی تصویر، ایپ اپڈیٹ یا ڈاؤن لوڈ پرانا ڈیٹا مٹا سکتی ہے۔</string>
+    <string name="reset_device">ڈیوائس: %1$s %2$s · اینڈرائیڈ %3$s</string>
+    <string name="reset_verdict_title">اس فون کا نتیجہ</string>
+    <string name="reset_enc_active">اسٹوریج انکرپشن: آن۔\n\nفیکٹری ری سیٹ کے بعد انکرپشن کی چابی مٹ جاتی ہے۔ پرانا اندرونی ڈیٹا بے معنی شور بن جاتا ہے جسے کوئی ایپ، AI یا لیب نہیں پڑھ سکتی۔ بہت پہلے ڈیلیٹ ہوئی ویڈیوز کی جگہ پر بھی عموماً نیا ڈیٹا لکھا جا چکا ہوتا ہے۔\n\nنتیجہ: اندرونی ریکوری ممکن نہیں۔ اصل امید نیچے دی گئی باہر کی جگہیں ہیں۔</string>
+    <string name="reset_enc_inactive">اسٹوریج انکرپشن: بند یا موجود نہیں (عموماً بہت پرانے فون)۔\n\nنظریاتی طور پر کوئی پروفیشنل فارنزک لیب کچھ ڈیٹا نکال سکتی ہے، مگر اس کے لیے روٹ یا فون کھولنا پڑتا ہے، یہ کسی ایپ سے ممکن نہیں۔ فون کا استعمال روکیں اور پہلے نیچے والی جگہیں چیک کریں۔</string>
+    <string name="reset_enc_unknown">انکرپشن کی حالت پڑھی نہیں جا سکی۔ اینڈرائیڈ 10 اور نئے فون ہمیشہ انکرپٹ ہوتے ہیں، اس لیے فیکٹری ری سیٹ کے بعد اندرونی ریکوری ناممکن سمجھیں۔ نیچے والی جگہیں چیک کریں۔</string>
+    <string name="reset_sources_title">آپ کی ویڈیوز ابھی کہاں ہو سکتی ہیں</string>
+    <string name="btn_open">کھولیں</string>
+
+    <string name="src_gphotos">گوگل فوٹوز</string>
+    <string name="src_gphotos_desc">Library میں Trash (60 دن تک)، Archive اور Locked Folder دیکھیں۔ پرانے فون پر استعمال ہونے والے ہر جی میل سے بھی لاگ ان کر کے دیکھیں۔</string>
+    <string name="src_takeout">گوگل ٹیک آؤٹ</string>
+    <string name="src_takeout_desc">گوگل اکاؤنٹ کا سارا ڈیٹا ڈاؤن لوڈ کر کے اس میں ویڈیوز تلاش کریں۔</string>
+    <string name="src_drive">گوگل ڈرائیو بیک اپ</string>
+    <string name="src_drive_desc">ڈیوائس اور واٹس ایپ کے بیک اپ اور ان کا سائز دیکھیں۔</string>
+    <string name="src_whatsapp">واٹس ایپ چیٹس</string>
+    <string name="src_whatsapp_desc">جس کو بھی آپ نے ویڈیو بھیجی تھی، اس کے پاس ابھی ہو سکتی ہے۔ ان سے کہیں: چیٹ کھولیں ← نام پر ٹیپ ← Media, links and docs ← واپس فارورڈ کریں۔</string>
+    <string name="src_meta">فیس بک / انسٹاگرام</string>
+    <string name="src_meta_desc">Accounts Centre سے اپنی معلومات ڈاؤن لوڈ کریں؛ اس میں اپلوڈ اور آرکائیو کی گئی ویڈیوز، اسٹوریز اور ریلز شامل ہوتی ہیں۔</string>
+    <string name="src_youtube">یوٹیوب / ٹک ٹاک اپلوڈ</string>
+    <string name="src_youtube_desc">جو ویڈیوز آپ نے اپلوڈ کی تھیں (پرائیویٹ یا ڈرافٹ بھی) وہ یوٹیوب اسٹوڈیو یا ٹک ٹاک سیٹنگز سے ڈاؤن لوڈ ہو سکتی ہیں۔</string>
+    <string name="src_cloud">سام سنگ کلاؤڈ / ون ڈرائیو</string>
+    <string name="src_cloud_desc">سام سنگ اور کچھ دوسرے فون گیلری کو ون ڈرائیو یا کمپنی کے کلاؤڈ سے سنک کرتے ہیں۔</string>
+    <string name="src_offline">پرانا فون، ایس ڈی کارڈ یا کمپیوٹر</string>
+    <string name="src_offline_desc">کوئی پرانا فون، میموری کارڈ، لیپ ٹاپ یا یو ایس بی چیک کریں جہاں آپ نے ویڈیوز کاپی کی ہوں۔ انہیں اسکین کرنے کے لیے ایس ڈی کارڈ والا حصہ استعمال کریں۔</string>
+    <string name="card_deep_title">پورے فون کا ڈیپ اسکین</string>
+    <string name="card_deep_desc">فون اور ایس ڈی کارڈ کی ہر فائل اور ہر فولڈر چیک کرتا ہے: چھپے فولڈر، ٹریش، واٹس ایپ / ٹیلی گرام / انسٹاگرام کی میڈیا اور کیش، تھمب نیل، اور وہ ویڈیوز جن کا نام یا ایکسٹینشن بدل گیا ہو۔</string>
+    <string name="deep_title">پورے فون کا ڈیپ اسکین</string>
+    <string name="deep_note">اندرونی اسٹوریج اور ایس ڈی کارڈ کی ہر فائل ایک ایک کر کے پڑھتا ہے اور فائل سگنیچر چیک کرتا ہے۔ ہر وہ ویڈیو فائل ڈھونڈ لیتا ہے جو ابھی فون پر موجود ہے، چاہے چھپی ہو، نام بدلا ہو یا کسی ایپ کی کیش میں پڑی ہو۔ جو ویڈیوز اینڈرائیڈ مٹا چکا ہے یا فیکٹری ری سیٹ میں گئی ہیں، انہیں یہ نہیں بنا سکتا کیونکہ وہ اسٹوریج انکرپٹ ہوتی ہے۔ \"All files access\" کی اجازت چاہیے۔ صرف پڑھتا ہے: کچھ تبدیل نہیں ہوتا۔</string>
+    <string name="btn_start_deep">ڈیپ اسکین شروع کریں</string>
+    <string name="deep_perm_needed">ڈیپ اسکین کے لیے \"All files access\" ضروری ہے۔ اگلی اسکرین پر Nexus Deep Recovery AI کے لیے \"Allow access to manage all files\" آن کریں، پھر واپس آئیں۔</string>
+</resources>

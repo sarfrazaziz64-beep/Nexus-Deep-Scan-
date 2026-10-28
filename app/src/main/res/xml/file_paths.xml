@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Deep-scan results are real files anywhere in shared storage; preview needs a content:// link -->
+    <root-path name="root" path="." />
+</paths>

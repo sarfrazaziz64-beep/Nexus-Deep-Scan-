@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Nexus" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/nexus_cyan</item>
+        <item name="colorOnPrimary">#FF04121A</item>
+        <item name="colorSecondary">@color/nexus_purple</item>
+        <item name="colorSurface">@color/nexus_surface</item>
+        <item name="android:windowBackground">@color/nexus_bg</item>
+        <item name="android:statusBarColor">@color/nexus_bg</item>
+        <item name="android:navigationBarColor">@color/nexus_bg</item>
+    </style>
+
+    <style name="NexusTitle">
+        <item name="android:textColor">@color/nexus_text</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="NexusBody">
+        <item name="android:textColor">@color/nexus_muted</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">1.15</item>
+    </style>
+</resources>
