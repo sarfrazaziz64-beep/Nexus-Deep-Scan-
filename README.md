@@ -13,6 +13,14 @@ Kotlin mein bani native Android app. Videos dhoondti, dikhati aur mehfooz copy k
 
 Har natija: thumbnail, naam, size, duration, tareekh, jagah. Search, filter (Trash / Hidden / Thumbnails / 30 din / 50MB+), sort (tareekh/size/naam), Preview, **Movies/NexusRecovery** mein copy (cancel ho sakti hai, adhuri copy khud delete ho jaati hai), aur Urdu/English button.
 
+## Version 1.1: naye expert features
+
+- **Gallery Recycle Bin:** Samsung, Xiaomi, Oppo, Vivo, Realme, OnePlus aur Huawei ki gallery ke chhupe Recycle Bin folder pehchanta hai ("RECYCLE BIN" badge). Android 10 aur purane phones par `Android/data` bhi scan hota hai, jahan Samsung ka `.Trash` hota hai.
+- **Source app:** har video ke saath likha hota hai ke woh kahan se aayi, jaise WhatsApp, Telegram, Instagram, TikTok, Snapchat, IMO, Camera ya Screen recording.
+- **Video health:** MP4/3GP/MOV ka dhancha check kar ke "✓ Playable" ya "⚠ Damaged" dikhata hai.
+- **Video Repair:** tooti ya ajeeb format wali video ko nayi MP4 mein dobara banata hai (MediaExtractor + MediaMuxer). Original nahi badalti. Agar video ka index (moov) bilkul gayab ho to saaf bata deta hai.
+- **Purani thumbnails nikalna:** gallery ki `.thumbdata` cache files se har JPEG tasveer kaat kar nikalta hai. Is se bahut pehle delete hui videos ki tasveer mil sakti hai, yani pata chal jata hai ke video mein kya tha.
+
 ## APK free mein kaise banayein (GitHub Actions)
 
 1. github.com par **New repository** banayein, maslan `nexus-deep-recovery`.

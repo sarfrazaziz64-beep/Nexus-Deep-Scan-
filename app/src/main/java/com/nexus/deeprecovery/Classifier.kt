@@ -28,6 +28,7 @@ object Classifier {
         val lower = name.lowercase()
         val ext = if (lower.contains('.')) lower.substringAfterLast('.') else ""
         val inThumbFolder = path.contains("/.thumbnails/", ignoreCase = true)
+        val inBin = RecycleBins.matches(path.lowercase())
 
         if (inThumbFolder && (mime.startsWith("image/") || ext in imageExts)) {
             return ItemKind.THUMBNAIL to (Format.mimeFromName(name) ?: "image/jpeg")
@@ -37,6 +38,7 @@ object Classifier {
         if (looksVideo) {
             val kind = when {
                 lower.startsWith(".trashed-") -> ItemKind.TRASHED
+                inBin -> ItemKind.RECYCLE_BIN
                 lower.startsWith(".") || path.contains("/.") -> ItemKind.HIDDEN
                 else -> ItemKind.VIDEO
             }
@@ -47,9 +49,9 @@ object Classifier {
         // No extension / odd extension / app cache chunk: check the real file signature.
         val unlabeled = ext.isEmpty() || ext.length > 5 || ext in suspectExts ||
             mime == "application/octet-stream" || mime.isEmpty()
-        if (unlabeled && size >= 64 * 1024) {
+        if (unlabeled && (size >= 64 * 1024 || (inBin && size >= 8 * 1024))) {
             val sig = sniff(open)
-            if (sig != null) return ItemKind.SIGNATURE to sig
+            if (sig != null) return (if (inBin) ItemKind.RECYCLE_BIN else ItemKind.SIGNATURE) to sig
         }
         return null
     }

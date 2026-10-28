@@ -52,7 +52,15 @@ class VideoAdapter(
             .filter { it.isNotEmpty() }
             .joinToString("  ·  ")
         holder.location.text = item.location
-        holder.badge.text = context.getString(kindLabel(item.kind))
+        val extra = listOfNotNull(
+            item.source.ifEmpty { null },
+            when (item.health) {
+                Health.PLAYABLE -> context.getString(R.string.health_ok)
+                Health.BROKEN -> context.getString(R.string.health_broken)
+                Health.UNKNOWN -> null
+            }
+        )
+        holder.badge.text = (listOf(context.getString(kindLabel(item.kind))) + extra).joinToString("  ·  ")
         holder.badge.setTextColor(ContextCompat.getColor(context, kindColor(item.kind)))
         holder.itemView.setOnClickListener { onClick(item) }
 
@@ -77,6 +85,7 @@ class VideoAdapter(
         fun kindLabel(kind: ItemKind): Int = when (kind) {
             ItemKind.VIDEO -> R.string.kind_video
             ItemKind.TRASHED -> R.string.kind_trashed
+            ItemKind.RECYCLE_BIN -> R.string.kind_recycle
             ItemKind.HIDDEN -> R.string.kind_hidden
             ItemKind.SIGNATURE -> R.string.kind_signature
             ItemKind.THUMBNAIL -> R.string.kind_thumbnail
@@ -85,6 +94,7 @@ class VideoAdapter(
         fun kindColor(kind: ItemKind): Int = when (kind) {
             ItemKind.VIDEO -> R.color.nexus_cyan
             ItemKind.TRASHED -> R.color.nexus_ok
+            ItemKind.RECYCLE_BIN -> R.color.nexus_ok
             ItemKind.HIDDEN -> R.color.nexus_purple
             ItemKind.SIGNATURE -> R.color.nexus_warn
             ItemKind.THUMBNAIL -> R.color.nexus_muted

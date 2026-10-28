@@ -46,6 +46,7 @@ object MediaStoreScanner {
         val cursor = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             val args = Bundle().apply {
                 putInt(MediaStore.QUERY_ARG_MATCH_TRASHED, MediaStore.MATCH_INCLUDE)
+                putInt(MediaStore.QUERY_ARG_MATCH_PENDING, MediaStore.MATCH_INCLUDE)
                 putStringArray(
                     ContentResolver.QUERY_ARG_SORT_COLUMNS,
                     arrayOf(MediaStore.Video.Media.DATE_MODIFIED)
@@ -114,7 +115,8 @@ object MediaStoreScanner {
                         durationMs = duration,
                         mime = mime ?: (Format.mimeFromName(name) ?: "video/mp4"),
                         kind = kind,
-                        fromMediaStore = true
+                        fromMediaStore = true,
+                        source = if (trashed) "System trash" else SourceDetector.fromPath("/$location/$name")
                     )
                 )
             }

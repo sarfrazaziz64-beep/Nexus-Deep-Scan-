@@ -27,7 +27,7 @@
     <string name="search_hint">نام یا فولڈر سے تلاش کریں</string>
 
     <string name="chip_all">سب</string>
-    <string name="chip_trash">ٹریش</string>
+    <string name="chip_trash">ٹریش / بن</string>
     <string name="chip_hidden">چھپی / بغیر نام</string>
     <string name="chip_thumbs">تھمب نیل</string>
     <string name="chip_recent">پچھلے 30 دن</string>
@@ -95,9 +95,16 @@
     <string name="src_offline">پرانا فون، ایس ڈی کارڈ یا کمپیوٹر</string>
     <string name="src_offline_desc">کوئی پرانا فون، میموری کارڈ، لیپ ٹاپ یا یو ایس بی چیک کریں جہاں آپ نے ویڈیوز کاپی کی ہوں۔ انہیں اسکین کرنے کے لیے ایس ڈی کارڈ والا حصہ استعمال کریں۔</string>
     <string name="card_deep_title">پورے فون کا ڈیپ اسکین</string>
-    <string name="card_deep_desc">فون اور ایس ڈی کارڈ کی ہر فائل اور ہر فولڈر چیک کرتا ہے: چھپے فولڈر، ٹریش، واٹس ایپ / ٹیلی گرام / انسٹاگرام کی میڈیا اور کیش، تھمب نیل، اور وہ ویڈیوز جن کا نام یا ایکسٹینشن بدل گیا ہو۔</string>
+    <string name="card_deep_desc">فون اور ایس ڈی کارڈ کی ہر فائل اور فولڈر چیک کرتا ہے: فون کمپنیوں کی گیلری کے ری سائیکل بن (سام سنگ، شاؤمی، اوپو، ویوو، ہواوے)، ٹریش، واٹس ایپ / ٹیلی گرام / انسٹاگرام / ٹک ٹاک کی میڈیا اور کیش، نام بدلی ویڈیوز، اور تھمب نیل کیش میں بچی پرانی ڈیلیٹ ویڈیوز کی تصویریں۔ ہر ویڈیو کے ساتھ بتاتا ہے کہ کس ایپ سے آئی اور چلتی ہے یا نہیں۔</string>
     <string name="deep_title">پورے فون کا ڈیپ اسکین</string>
     <string name="deep_note">اندرونی اسٹوریج اور ایس ڈی کارڈ کی ہر فائل ایک ایک کر کے پڑھتا ہے اور فائل سگنیچر چیک کرتا ہے۔ ہر وہ ویڈیو فائل ڈھونڈ لیتا ہے جو ابھی فون پر موجود ہے، چاہے چھپی ہو، نام بدلا ہو یا کسی ایپ کی کیش میں پڑی ہو۔ جو ویڈیوز اینڈرائیڈ مٹا چکا ہے یا فیکٹری ری سیٹ میں گئی ہیں، انہیں یہ نہیں بنا سکتا کیونکہ وہ اسٹوریج انکرپٹ ہوتی ہے۔ \"All files access\" کی اجازت چاہیے۔ صرف پڑھتا ہے: کچھ تبدیل نہیں ہوتا۔</string>
     <string name="btn_start_deep">ڈیپ اسکین شروع کریں</string>
     <string name="deep_perm_needed">ڈیپ اسکین کے لیے \"All files access\" ضروری ہے۔ اگلی اسکرین پر Nexus Deep Recovery AI کے لیے \"Allow access to manage all files\" آن کریں، پھر واپس آئیں۔</string>
+    <string name="kind_recycle">ری سائیکل بن · واپس لائی جا سکتی ہے</string>
+    <string name="health_ok">✓ چلنے والی</string>
+    <string name="health_broken">⚠ خراب</string>
+    <string name="action_repair">ویڈیو ٹھیک کریں (نئی کاپی بنے گی)</string>
+    <string name="repair_running">ویڈیو کو نئی MP4 میں دوبارہ بنایا جا رہا ہے… اصل فائل تبدیل نہیں ہو رہی۔</string>
+    <string name="repair_impossible">یہ ویڈیو ٹھیک نہیں ہو سکتی: اس کا انڈیکس (moov) غائب ہے، اس لیے اینڈرائیڈ اس کے فریم نہیں پڑھ سکتا۔ پھر بھی کاپی کر لیں؛ کمپیوٹر پر untrunc (مفت) اسی فون کی کسی ٹھیک ویڈیو کی مدد سے کبھی کبھی اسے ٹھیک کر دیتا ہے۔</string>
+    <string name="repair_failed">ٹھیک کرنا ناکام: %1$s</string>
 </resources>

@@ -5,6 +5,7 @@ import android.net.Uri
 import android.provider.DocumentsContract
 import android.provider.DocumentsContract.Document
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 
@@ -17,6 +18,7 @@ class SafScanner(private val context: Context) {
 
     suspend fun scan(treeUri: Uri, onProgress: (ScanProgress) -> Unit): ScanResult = withContext(Dispatchers.IO) {
         val resolver = context.contentResolver
+        ThumbCarver.clear(context)
         val results = ArrayList<VideoItem>()
         val stack = ArrayDeque<Pair<String, String>>()
         stack.addLast(DocumentsContract.getTreeDocumentId(treeUri) to "/")
@@ -48,6 +50,17 @@ class SafScanner(private val context: Context) {
                         } else if (docId.isNotEmpty()) {
                             scanned++
                             val uri = DocumentsContract.buildDocumentUriUsingTree(treeUri, docId)
+                            if (ThumbCarver.isThumbCache(name, path, size)) {
+                                val job = coroutineContext[Job]
+                                results.addAll(
+                                    ThumbCarver.carve(
+                                        context, name, path, modified,
+                                        open = { resolver.openInputStream(uri) },
+                                        isActive = { job?.isActive != false }
+                                    )
+                                )
+                                continue
+                            }
                             val found = Classifier.classify(name, mime, path, size) {
                                 resolver.openInputStream(uri)
                             }
@@ -62,7 +75,8 @@ class SafScanner(private val context: Context) {
                                         durationMs = 0L,
                                         mime = found.second,
                                         kind = found.first,
-                                        fromMediaStore = false
+                                        fromMediaStore = false,
+                                        source = SourceDetector.fromPath(path + name)
                                     )
                                 )
                             }

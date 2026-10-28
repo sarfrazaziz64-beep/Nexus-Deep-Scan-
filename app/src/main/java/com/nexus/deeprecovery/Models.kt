@@ -6,7 +6,10 @@ import java.util.Date
 import java.util.Locale
 
 /** What kind of finding a result is. Only real, readable files are ever listed. */
-enum class ItemKind { VIDEO, TRASHED, HIDDEN, SIGNATURE, THUMBNAIL }
+enum class ItemKind { VIDEO, TRASHED, RECYCLE_BIN, HIDDEN, SIGNATURE, THUMBNAIL }
+
+/** Result of a structural check of the file (MP4 family only). */
+enum class Health { UNKNOWN, PLAYABLE, BROKEN }
 
 data class VideoItem(
     val uri: Uri,
@@ -17,7 +20,9 @@ data class VideoItem(
     val durationMs: Long,
     val mime: String,
     val kind: ItemKind,
-    val fromMediaStore: Boolean
+    val fromMediaStore: Boolean,
+    val source: String = "",
+    val health: Health = Health.UNKNOWN
 )
 
 object Format {

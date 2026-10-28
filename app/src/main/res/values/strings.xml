@@ -28,7 +28,7 @@
     <string name="search_hint">Search by name or folder</string>
 
     <string name="chip_all">All</string>
-    <string name="chip_trash">Trash</string>
+    <string name="chip_trash">Trash / Bin</string>
     <string name="chip_hidden">Hidden / Unlabeled</string>
     <string name="chip_thumbs">Thumbnails</string>
     <string name="chip_recent">Last 30 days</string>
@@ -96,9 +96,16 @@
     <string name="src_offline">Old phone, SD card or computer</string>
     <string name="src_offline_desc">Check any old phone, memory card, laptop or USB where you may have copied videos. Use the SD Card section to scan them.</string>
     <string name="card_deep_title">Full Phone Deep Scan</string>
-    <string name="card_deep_desc">Checks every file and folder on the phone and SD card: hidden folders, trash, WhatsApp / Telegram / Instagram media and cache, thumbnails, and videos whose name or extension was changed.</string>
+    <string name="card_deep_desc">Checks every file and folder on the phone and SD card: phone-maker gallery Recycle Bins (Samsung, Xiaomi, Oppo, Vivo, Huawei), trash, WhatsApp / Telegram / Instagram / TikTok media and cache, renamed videos, and pictures of old deleted videos left in thumbnail caches. Shows which app each video came from and whether it plays.</string>
     <string name="deep_title">Full Phone Deep Scan</string>
     <string name="deep_note">Reads every file on internal storage and any SD card, one by one, and checks file signatures. It finds every video file that still physically exists, even if hidden, renamed or left in an app cache. It cannot rebuild videos Android has already erased or that were lost in a factory reset, because that storage is encrypted. Needs "All files access". Read-only: nothing is changed.</string>
     <string name="btn_start_deep">Start deep scan</string>
     <string name="deep_perm_needed">Deep scan needs \"All files access\". On the next screen turn ON \"Allow access to manage all files\" for Nexus Deep Recovery AI, then come back.</string>
+    <string name="kind_recycle">RECYCLE BIN · restorable</string>
+    <string name="health_ok">✓ Playable</string>
+    <string name="health_broken">⚠ Damaged</string>
+    <string name="action_repair">Repair / rebuild video (saves a new copy)</string>
+    <string name="repair_running">Rebuilding the video into a fresh MP4… the original is not changed.</string>
+    <string name="repair_impossible">This video cannot be rebuilt: its index (moov) is missing, so Android cannot read its frames. Try copying it anyway; a PC tool such as untrunc (free) with a healthy video from the same phone can sometimes fix it.</string>
+    <string name="repair_failed">Repair failed: %1$s</string>
 </resources>

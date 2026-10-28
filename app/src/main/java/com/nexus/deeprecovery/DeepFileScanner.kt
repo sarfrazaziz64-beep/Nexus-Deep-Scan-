@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Environment
 import android.os.storage.StorageManager
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.withContext
 import java.io.File
@@ -18,6 +19,8 @@ import java.io.FileInputStream
  * whose name or extension was changed (checked by video signature).
  *
  * Needs "All files access" on Android 11+ (READ_EXTERNAL_STORAGE on older phones).
+ * Also detects phone-maker gallery recycle bins, tags each video with the app it came from,
+ * checks MP4 structure (playable / broken) and carves old thumbnails out of gallery caches.
  * Read-only. It finds every video file that still exists on the phone.
  * It cannot reach sectors that Android has already erased or that are encrypted.
  */
@@ -43,17 +46,18 @@ class DeepFileScanner(private val context: Context) {
     suspend fun scan(onProgress: (ScanProgress) -> Unit): ScanResult = withContext(Dispatchers.IO) {
         val results = ArrayList<VideoItem>()
         var scanned = 0
+        ThumbCarver.clear(context)
+        val job = coroutineContext[Job]
         for (root in roots()) {
-            val skip = setOf(
-                File(root, "Android/data").absolutePath,
-                File(root, "Android/obb").absolutePath
-            )
+            // Android/data is included: on Android 10 and older it holds gallery recycle bins
+            // (e.g. Samsung .Trash) and app video caches. On Android 11+ the system blocks it
+            // and listFiles() simply returns null there.
             val stack = ArrayDeque<Pair<File, Int>>()
             stack.addLast(root to 0)
             while (stack.isNotEmpty()) {
                 ensureActive()
                 val (dir, depth) = stack.removeLast()
-                if (depth > 40 || dir.absolutePath in skip) continue
+                if (depth > 40) continue
                 val children = try { dir.listFiles() } catch (e: SecurityException) { null } ?: continue
                 for (f in children) {
                     ensureActive()
@@ -65,10 +69,24 @@ class DeepFileScanner(private val context: Context) {
                     val name = f.name
                     val path = (f.parent ?: "") + "/"
                     val size = f.length()
+
+                    if (ThumbCarver.isThumbCache(name, path, size)) {
+                        results.addAll(
+                            ThumbCarver.carve(
+                                context, name, f.parent ?: "", f.lastModified(),
+                                open = { FileInputStream(f) },
+                                isActive = { job?.isActive != false }
+                            )
+                        )
+                        onProgress(ScanProgress(scanned, results.size))
+                        continue
+                    }
+
                     val found = Classifier.classify(name, Format.mimeFromName(name) ?: "", path, size) {
                         FileInputStream(f)
                     }
                     if (found != null) {
+                        val health = if (Mp4Inspector.isMp4Family(found.second)) Mp4Inspector.health(f) else Health.UNKNOWN
                         results.add(
                             VideoItem(
                                 uri = Uri.fromFile(f),
@@ -79,7 +97,9 @@ class DeepFileScanner(private val context: Context) {
                                 durationMs = 0L,
                                 mime = found.second,
                                 kind = found.first,
-                                fromMediaStore = false
+                                fromMediaStore = false,
+                                source = SourceDetector.fromPath(path + name),
+                                health = health
                             )
                         )
                     }

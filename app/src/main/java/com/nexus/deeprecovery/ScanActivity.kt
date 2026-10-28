@@ -51,7 +51,7 @@ class ScanActivity : AppCompatActivity() {
     private var sortMode = 0
     private var scanFinished = false
     private var pendingDeep = false
-    private var pendingCopy: VideoItem? = null
+    private var pendingAction: (() -> Unit)? = null
     private var baseStatus = ""
 
     private lateinit var tvStatus: TextView
@@ -77,9 +77,9 @@ class ScanActivity : AppCompatActivity() {
 
     private val writePermLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { ok ->
-            val item = pendingCopy
-            pendingCopy = null
-            if (ok && item != null) doCopy(item) else showPermDenied()
+            val action = pendingAction
+            pendingAction = null
+            if (ok && action != null) action() else showPermDenied()
         }
 
     private val treeLauncher =
@@ -299,7 +299,7 @@ class ScanActivity : AppCompatActivity() {
         val big = 50L * 1024 * 1024
         val filtered = allItems.filter { item ->
             val typeOk = when (type) {
-                R.id.chip_trash -> item.kind == ItemKind.TRASHED
+                R.id.chip_trash -> item.kind == ItemKind.TRASHED || item.kind == ItemKind.RECYCLE_BIN
                 R.id.chip_hidden -> item.kind == ItemKind.HIDDEN || item.kind == ItemKind.SIGNATURE
                 R.id.chip_thumbs -> item.kind == ItemKind.THUMBNAIL
                 else -> true
@@ -327,7 +327,10 @@ class ScanActivity : AppCompatActivity() {
         val labels = ArrayList<String>()
         val actions = ArrayList<() -> Unit>()
         labels.add(getString(R.string.action_preview)); actions.add { preview(item) }
-        labels.add(getString(R.string.action_copy)); actions.add { startCopy(item) }
+        labels.add(getString(R.string.action_copy)); actions.add { withWriteAccess { doCopy(item) } }
+        if (item.mime.startsWith("video/")) {
+            labels.add(getString(R.string.action_repair)); actions.add { withWriteAccess { doRepair(item) } }
+        }
         if (item.kind == ItemKind.TRASHED && item.fromMediaStore && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             labels.add(getString(R.string.action_restore)); actions.add { restore(item) }
         }
@@ -353,27 +356,43 @@ class ScanActivity : AppCompatActivity() {
         }
     }
 
-    private fun startCopy(item: VideoItem) {
+    /** Android 9 and older need storage write permission to save into Movies/NexusRecovery. */
+    private fun withWriteAccess(action: () -> Unit) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q &&
             ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
             PackageManager.PERMISSION_GRANTED
         ) {
-            pendingCopy = item
+            pendingAction = action
             writePermLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
             return
         }
-        doCopy(item)
+        action()
     }
 
-    private fun doCopy(item: VideoItem) {
+    private fun doCopy(item: VideoItem) =
+        runFileJob(R.string.copy_running, { FileOps.copyToRecovery(this@ScanActivity, item) }) { e ->
+            getString(R.string.copy_failed, e.message ?: e.javaClass.simpleName)
+        }
+
+    private fun doRepair(item: VideoItem) =
+        runFileJob(R.string.repair_running, { VideoRepair.rebuild(this@ScanActivity, item) }) { e ->
+            if (e is RepairImpossibleException) getString(R.string.repair_impossible)
+            else getString(R.string.repair_failed, e.message ?: e.javaClass.simpleName)
+        }
+
+    private fun runFileJob(
+        runningMsg: Int,
+        work: suspend () -> String,
+        errorMsg: (Exception) -> String
+    ) {
         val dialog = MaterialAlertDialogBuilder(this)
-            .setMessage(R.string.copy_running)
+            .setMessage(runningMsg)
             .setCancelable(false)
             .setNegativeButton(R.string.btn_cancel) { _, _ -> copyJob?.cancel() }
             .show()
         copyJob = lifecycleScope.launch {
             try {
-                val where = FileOps.copyToRecovery(this@ScanActivity, item)
+                val where = work()
                 dialog.dismiss()
                 MaterialAlertDialogBuilder(this@ScanActivity)
                     .setMessage(getString(R.string.copy_done, where))
@@ -385,7 +404,10 @@ class ScanActivity : AppCompatActivity() {
                 throw e
             } catch (e: Exception) {
                 dialog.dismiss()
-                toast(getString(R.string.copy_failed, e.message ?: e.javaClass.simpleName))
+                MaterialAlertDialogBuilder(this@ScanActivity)
+                    .setMessage(errorMsg(e))
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show()
             }
         }
     }
@@ -410,7 +432,8 @@ class ScanActivity : AppCompatActivity() {
                     Format.size(item.size),
                     Format.date(item.dateMillis),
                     item.location,
-                    getString(VideoAdapter.kindLabel(item.kind)) + " · " + item.mime
+                    listOf(getString(VideoAdapter.kindLabel(item.kind)), item.source, item.mime)
+                        .filter { it.isNotEmpty() }.joinToString(" · ")
                 )
             )
             .setPositiveButton(android.R.string.ok, null)
